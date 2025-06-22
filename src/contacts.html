@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - НПП ИНПРОКОМ</title>
+    <link rel="stylesheet" href="SASS/style.css">
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header__content">
+                    <a href="#" onclick="goToHome(); return false;" class="header__logo">
+                        <img src="img/logo.svg" alt="ИНПРОКОМ Лого" class="header__logo-img">
+                    </a>
+                    <nav class="header__nav">
+                        <ul class="header__nav-list">
+                            <li class="header__nav-item"><a href="#" onclick="goToHome(); return false;" class="header__nav-link">Главная</a></li>
+                            <li class="header__nav-item"><a href="#" onclick="goToServices(); return false;" class="header__nav-link">Услуги</a></li>
+                            <li class="header__nav-item"><a href="#" onclick="goToContacts(); return false;" class="header__nav-link header__nav-link--active">Контакты</a></li>
+                        </ul>
+                    </nav>
+                    <button class="header__menu-toggle" aria-label="Открыть меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <section class="contacts">
+                <div class="container contacts__container">
+                    <h1 class="contacts__title">Свяжитесь с нами</h1>
+                    <div class="contacts__content">
+                        <form class="contacts__form">
+                            <div class="contacts__inputs">
+                                <input type="text" class="contacts__input" placeholder="Имя" required>
+                                <input type="email" class="contacts__input" placeholder="Почта" required>
+                            </div>
+                            <input type="text" class="contacts__input contacts__input--message" placeholder="Сообщение" required>
+                            <button type="submit" class="btn btn--primary contacts__submit">Отправить</button>
+                        </form>
+                        <div class="contacts__info">
+                            <div class="contacts__info-item">
+                                <img src="img/Place Marker.svg" alt="Адрес" class="contacts__icon">
+                                <span>п. Балакирево, Заводская улица, дом 10, корпус 50.</span>
+                            </div>
+                            <div class="contacts__info-item">
+                                <img src="img/Phone.svg" alt="Телефон" class="contacts__icon">
+                                <span>+7(910) 775-88-12 (отдел кадров)</span>
+                            </div>
+                            <div class="contacts__info-item">
+                                <img src="img/Ringing Phone.svg" alt="Телефон" class="contacts__icon">
+                                <span>8(49244) 7-47-17 (секретариат)</span>
+                            </div>
+                            <div class="contacts__info-item">
+                                <img src="img/Email.svg" alt="Email" class="contacts__icon">
+                                <span>info@inprokom.ru</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contacts__map-section">
+                <div class="container">
+                    <div class="contacts__map">
+                        <iframe src="https://yandex.ru/map-widget/v1/?ll=38.847112%2C56.514182&z=16&pt=38.847112,56.514182,pm2rdm" width="100%" height="350" frameborder="0" allowfullscreen style="border:0;"></iframe>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__content">
+                    <div class="footer__column">
+                        <h4 class="footer__title">ТЕЛЕФОН/ФАКС:</h4>
+                        <a href="tel:+7492447-75-34" class="footer__link">+7(49244)7-75-34</a>
+                        <a href="tel:+7492447-46-85" class="footer__link">+7(49244)7-46-85</a>
+                    </div>
+                    <div class="footer__column">
+                        <h4 class="footer__title">АДРЕС:</h4>
+                        <p class="footer__text">
+                            601630 Владимирская обл., Александровский р-н, пос. Балакирево, ул. Заводская, дом 10, корпус 50, а/я 33.
+                        </p>
+                    </div>
+                    <div class="footer__column">
+                        <h4 class="footer__title">E-MAIL:</h4>
+                        <a href="mailto:info@inprokom.ru" class="footer__link">info@inprokom.ru</a>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p>Все права защищены 2025 ©</p>
+                    <p>Внимание! Сайт не является публичной офертой, вся информация носит справочный характер.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="js/main.js"></script>
+    <script>
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html> 

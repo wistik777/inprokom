@@ -1,0 +1,848 @@
+// Variables
+$primary-red: #d32f2f
+$primary-text: #333
+$secondary-text: #666
+$light-grey-bg: #f5f5f5
+$dark-grey-bg: #4f4f4f
+$white: #fff
+$border-color: #e0e0e0
+$service-grey: #7C7C7C
+
+$font-main: "Helvetica Neue", Helvetica, Arial, sans-serif
+$font-size-base: 16px
+$font-size-md: 24px
+$font-size-lg: 36px
+
+// Mixins
+@mixin desktop
+  @media (max-width: 1200px)
+    @content
+
+@mixin tablet
+  @media (max-width: 992px)
+    @content
+
+@mixin mobile
+  @media (max-width: 768px)
+    @content
+
+// Base and Reset
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+html, body
+  height: 100%
+
+body
+  font-family: $font-main
+  font-size: $font-size-base
+  color: $primary-text
+  background-color: $white
+  line-height: 1.6
+
+.main-wrapper
+  display: flex
+  flex-direction: column
+  min-height: 100%
+
+.main
+  flex: 1 0 auto
+
+.container
+  max-width: 1140px
+  margin: 0 auto
+  padding: 0 15px
+
+.section-title
+  font-size: $font-size-lg
+  color: $primary-red
+  font-weight: bold
+  text-align: center
+  margin-bottom: 50px
+  padding-bottom: 10px
+  position: relative
+  
+  &::after
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 50%
+    transform: translateX(-50%)
+    width: 80px
+    height: 3px
+    background-color: $primary-text
+
+  &--light
+    color: $white
+    &::after
+      background-color: $white
+
+// Button
+.btn
+  display: inline-block
+  background-color: $primary-red
+  color: $white
+  padding: 10px 25px
+  border: 2px solid $primary-red
+  border-radius: 5px
+  text-decoration: none
+  font-weight: bold
+  text-transform: uppercase
+  transition: all 0.3s ease
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2)
+
+  &:hover
+    background-color: darken($primary-red, 10%)
+    border-color: darken($primary-red, 10%)
+    transform: translateY(-2px)
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3)
+
+// Header
+.header
+  background-color: $white
+  position: sticky
+  top: 0
+  z-index: 100
+  padding: 15px 0
+  border-bottom: 1px solid #e0e0e0
+  width: 100vw
+  left: 0
+  right: 0
+
+  &__content
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+  &__logo-img
+    height: 50px
+
+  &__nav-list
+    display: flex
+    list-style: none
+    gap: 25px
+
+  &__nav-link
+    text-decoration: none
+    color: $primary-text
+    font-weight: 500
+    font-size: 18px
+    padding-bottom: 5px
+    border-bottom: 2px solid transparent
+    transition: all 0.3s ease
+
+    &:hover
+      color: $primary-red
+      border-bottom-color: $primary-red
+
+    &--active
+      color: $primary-red
+      font-weight: bold
+      border-bottom-color: $primary-red
+
+// Hamburger Menu Icon
+.header__menu-toggle
+  display: none
+  background: transparent
+  border: none
+  cursor: pointer
+  padding: 10px
+  z-index: 1001
+  position: relative
+  width: 45px
+  height: 45px
+
+  span
+    display: block
+    width: 25px
+    height: 3px
+    background-color: $primary-text
+    margin: 5px auto
+    transition: all 0.3s ease-in-out
+    position: absolute
+    left: 10px
+
+  span:nth-child(1)
+    top: 10px
+  span:nth-child(2)
+    top: 19px
+  span:nth-child(3)
+    top: 28px
+  
+  &--open
+    span
+      background-color: $white
+    span:nth-child(1)
+      top: 19px
+      transform: rotate(45deg)
+    span:nth-child(2)
+      opacity: 0
+    span:nth-child(3)
+      top: 19px
+      transform: rotate(-45deg)
+
+body.no-scroll
+  overflow: hidden
+
+// Hero Section
+.hero
+  height: 600px
+  background-image: url('../img/out.png')
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+  display: flex
+  align-items: center
+  position: relative
+
+  &__content-wrapper
+    display: flex
+    justify-content: flex-end
+    height: 100%
+    align-items: center
+
+  &__content
+    position: relative
+    z-index: 2
+    max-width: 50%
+    color: $primary-text
+    padding-right: 50px
+    @include tablet
+      max-width: 80%
+      padding: 0 20px
+      text-align: left
+
+  &__title
+    font-size: $font-size-lg
+    font-weight: bold
+    margin-bottom: 20px
+    line-height: 1.5
+
+  &__description
+    font-size: $font-size-md
+    margin-bottom: 30px
+    line-height: 1.5
+
+// About Section
+.about
+  padding: 80px 0
+  background-size: cover
+  background-position: center
+
+  &__content
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 50px
+    align-items: center
+    backdrop-filter: blur(5px)
+  
+  &__text
+    font-size: 18px
+    line-height: 1.7
+    background: rgba(255, 255, 255, 0.85)
+    padding: 30px
+    border-radius: 5px
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05)
+  
+  &__image
+    img
+      width: 100%
+      border-radius: 10px
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1)
+      border: 4px solid $white
+
+
+// Vacancies Section
+.vacancies
+  background: $dark-grey-bg
+  position: relative
+  padding-bottom: 80px
+
+  &__top
+    padding: 60px 0 // Increased padding for more height
+    background-size: cover
+    background-position: center
+    position: relative
+    z-index: 1
+
+    &::after // Wave shape
+      content: ''
+      position: absolute
+      bottom: 0
+      left: 0
+      width: 100%
+      height: 60px
+      background: $dark-grey-bg
+      clip-path: ellipse(60% 100% at 50% 0%)
+      transform: translateY(50%)
+
+  &__header
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+
+  &__title
+    background: $white
+    color: $primary-text
+    font-size: $font-size-md
+    font-weight: bold
+    padding: 10px 30px
+    border-radius: 10px
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2)
+  
+  &__main
+    padding: 100px 0 // Increased vertical padding
+
+  &__slider
+    position: relative
+
+.slider
+  &__arrow
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    background: rgba(255,255,255,0.2)
+    border: none
+    color: $white
+    font-size: 40px
+    width: 50px
+    height: 50px
+    border-radius: 50%
+    cursor: pointer
+    z-index: 5
+    transition: background 0.3s ease
+
+    &:hover
+      background: rgba(255,255,255,0.4)
+
+    &--prev
+      left: -25px
+    &--next
+      right: -25px
+  
+  &__track-container
+    overflow: hidden
+    
+  &__track
+    display: flex
+    transition: transform 0.5s ease-in-out
+
+  &__item
+    flex: 0 0 100% // Each item takes full width of the container
+    padding: 0 40px // Add some horizontal padding
+    display: flex
+    justify-content: center
+
+.vacancy-card
+  background: transparent
+  color: $white
+  border-radius: 10px
+  display: flex
+  gap: 40px // Increased gap
+  align-items: center
+  max-width: 900px // Constrain the card size
+  width: 100%
+
+  &__image
+    border: 4px solid $white
+    border-radius: 10px
+    overflow: hidden
+    flex-shrink: 0
+    img
+      width: 350px // Made image larger
+      height: auto
+      display: block
+
+  &__info
+    text-align: left
+
+  &__info-title
+    font-size: 32px // Made title larger
+    font-weight: bold
+    margin-bottom: 15px
+
+  &__description
+    font-size: 18px // Made description larger
+    margin-bottom: 30px
+
+
+// Qualities Section
+.qualities
+    padding: 120px 0
+    .section-title
+        margin-bottom: 70px
+    &__grid
+        max-width: 1200px
+        margin: 0 auto
+        display: grid
+        grid-template-columns: repeat(4, 1fr)
+        gap: 40px
+        justify-items: center
+
+.quality-item
+    text-align: center
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+
+.quality-item__icon
+    display: flex
+    justify-content: center
+    align-items: center
+    margin-bottom: 10px
+    img
+        height: 100px
+
+.quality-item__text
+    font-size: 22px
+    font-weight: 600
+    line-height: 1.3
+    margin: 0
+    text-align: center
+
+// Services page - Clean Re-do
+.services
+    padding: 70px 0 60px
+    position: relative
+    background: none
+
+.services-divider
+    width: 100%
+    height: 4px
+    background: $service-grey
+    border-radius: 0 0 8px 8px
+    margin-bottom: -4px
+    position: relative
+    z-index: 2
+
+.service-item__flex
+    display: flex
+    align-items: center
+    gap: 70px
+    width: 100%
+    .service-item__image, .service-item__content
+        width: 50%
+
+.service-item
+    margin-left: 0
+    margin-right: 0
+    border-radius: 0
+    box-shadow: none
+    padding-left: 0
+    padding-right: 0
+    margin-bottom: 60px
+    &:last-child
+        margin-bottom: 0
+    // Для четных делаем фон серым на всю ширину
+    &:nth-child(even)
+        background: $service-grey
+        color: $white
+        padding-top: 60px
+        padding-bottom: 60px
+        padding-left: 0
+        padding-right: 0
+    &:nth-child(odd)
+        background: $white
+        color: $primary-text
+    
+    &__image
+        flex: 1 1 500px // Give it a base size but allow shrinking
+        max-width: 500px // Don't allow it to grow too large
+        
+        img
+            display: block
+            width: 100%
+            border-radius: 8px
+            border: 1px solid #ddd
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1)
+
+    &__content
+        flex: 1 1 50%
+    
+    &__title
+        // color: $accent-color
+        font-size: 24px
+        font-weight: 700
+        padding-bottom: 15px
+        margin-bottom: 20px
+        border-bottom: 2px solid #333
+    
+    &__list
+        list-style: none
+        padding: 0
+        margin: 0
+        li
+            color: #333
+            padding-left: 25px
+            position: relative
+            margin-bottom: 12px
+            font-size: 16px
+            &::before
+                content: '•'
+                // color: $accent-color
+                position: absolute
+                left: 0
+                font-size: 20px
+                line-height: 1
+
+// Footer
+.footer
+    padding-top: 50px
+    padding-bottom: 40px
+    position: relative
+    background-color: $dark-grey-bg
+    margin-top: 0
+    color: $white
+
+    &__content
+        position: relative
+        z-index: 3 // Content on top of all waves
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
+        gap: 60px // Increased gap
+        margin-bottom: 50px // Increased margin
+
+    &__title
+        font-size: 16px // Slightly smaller title
+        font-weight: bold
+        text-transform: uppercase
+        margin-bottom: 20px // More space
+        color: $white
+        letter-spacing: 0.5px
+
+    &__link, &__text
+        color: #ccc
+        text-decoration: none
+        display: block
+        margin-bottom: 8px // More space between links
+        transition: color 0.3s ease
+        line-height: 1.7 // Improved line height
+
+    &__link:hover
+        color: $primary-red
+
+    &__bottom
+        border-top: 1px solid #666
+        padding-top: 30px // More padding
+        margin-top: 50px // More margin
+        text-align: center
+        font-size: 13px // Slightly smaller
+        color: #999 // Lighter color
+        position: relative
+        z-index: 3
+
+// Responsive Adjustments
+@include tablet
+  .header
+    position: fixed
+    background-color: rgba(255,255,255,0.95)
+    backdrop-filter: blur(5px)
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1)
+
+    &__nav
+      display: none
+      position: fixed
+      top: 0
+      left: 0
+      width: 100%
+      height: 100vh
+      background: rgba(0,0,0,0.9)
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      z-index: 1000
+
+      &--open
+        display: flex
+
+    &__nav-list
+      flex-direction: column
+      gap: 30px
+      text-align: center
+
+    &__nav-link
+      font-size: $font-size-md
+      color: $white
+      padding: 10px 20px
+      border-bottom: none
+
+      &--active, &:hover
+        color: $primary-red
+
+    &__menu-toggle
+      display: block
+  
+  .hero
+    height: auto
+    padding: 120px 0 60px
+    background-position: top center
+
+    &__content-wrapper
+      justify-content: center
+
+    &__content
+      max-width: 90%
+      padding: 0
+      text-align: center
+
+  .about__content
+    grid-template-columns: 1fr
+    gap: 30px
+  
+  .vacancies
+    &__main
+      padding: 80px 0
+
+  .vacancy-card
+    flex-direction: column
+    text-align: center
+    gap: 20px
+    
+    &__image img
+      width: 100%
+      height: 250px
+      object-fit: cover
+
+  .qualities__grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: 50px
+
+  .footer__content
+    grid-template-columns: 1fr
+    text-align: center
+
+  .services
+    padding: 40px 0 30px
+  .service-item
+    margin-bottom: 44px
+    &__image
+      max-width: 320px
+      margin: 0 auto 18px auto
+  .service-item__flex
+    gap: 18px
+
+@include mobile
+  .section-title
+    font-size: $font-size-md
+    margin-bottom: 40px
+
+  .hero
+    padding: 100px 0 50px
+    &__title
+      font-size: $font-size-md
+    &__description
+      font-size: $font-size-base
+  
+  .vacancies
+    &__top
+      padding: 40px 0
+
+    &__header
+      flex-direction: column
+      gap: 20px
+      
+    &__main
+      padding: 60px 0
+      
+    .slider__arrow
+      width: 40px
+      height: 40px
+      font-size: 30px
+      &--prev
+        left: 5px
+      &--next
+        right: 5px
+
+  .qualities__grid
+    grid-template-columns: 1fr
+    gap: 40px
+
+  .services
+    padding: 24px 0 12px
+  .service-item
+    margin-bottom: 32px
+    &__image
+      max-width: 100%
+      margin: 0 auto 2px auto
+  .service-item__flex
+    gap: 0
+
+// Media Queries
+@media (max-width: 992px)
+  .header
+    &.active
+      transform: translateX(0)
+
+  .service-item__flex
+    flex-direction: column !important
+    gap: 30px
+    .service-item__image, .service-item__content
+        width: 100%
+
+  .footer
+    &__content
+      grid-template-columns: 1fr
+      text-align: center
+
+.pagination
+    display: flex
+    justify-content: center
+    align-items: center
+    margin: 50px 0
+
+.pagination__number, .pagination__arrow
+    font-size: 24px
+    font-weight: bold
+    border-radius: 8px
+    padding: 12px 22px
+    border: none
+    background: transparent
+    color: $primary-text
+    transition: all 0.3s
+    margin: 0 4px
+
+.pagination__number--active, .pagination__arrow--active
+    background: $primary-red
+    color: $white
+    border: none
+    font-size: 32px
+    transform: scale(1.15)
+
+// About section image
+.about__image img
+    border: none
+    box-shadow: none
+
+// --- Контакты ---
+.contacts
+  padding: 60px 0 70px
+  background: $white
+  &__container
+    max-width: 1000px
+    margin: 0 auto
+    padding: 0 15px
+  &__title
+    font-size: 32px
+    color: $primary-red
+    font-weight: bold
+    margin-bottom: 40px
+    text-align: left
+  &__content
+    display: flex
+    gap: 50px
+    align-items: flex-start
+    justify-content: space-between
+    @include tablet
+      flex-direction: column
+      gap: 30px
+      align-items: stretch
+    @include mobile
+      gap: 18px
+  &__form
+    flex: 1 1 55%
+    display: flex
+    flex-direction: column
+    gap: 18px
+    min-width: 0
+    @include tablet
+      width: 100%
+    @include mobile
+      gap: 10px
+  &__inputs
+    display: flex
+    gap: 18px
+    @include mobile
+      flex-direction: column
+      gap: 8px
+  &__input
+    flex: 1 1 0
+    padding: 14px 18px
+    border: 2px solid #ccc
+    border-radius: 8px
+    font-size: 16px
+    background: #f5f5f5
+    color: $primary-text
+    outline: none
+    transition: border 0.2s
+    &:focus
+      border-color: $primary-red
+    &--message
+      min-height: 90px
+      resize: vertical
+      font-size: 16px
+      margin-top: 0
+      @include mobile
+        min-height: 60px
+  &__submit
+    align-self: flex-end
+    margin-top: 8px
+    @include mobile
+      width: 100%
+      align-self: stretch
+  &__info
+    flex: 1 1 40%
+    display: flex
+    flex-direction: column
+    gap: 22px
+    background: #f5f5f5
+    border-radius: 12px
+    padding: 28px 24px
+    min-width: 220px
+    @include tablet
+      width: 100%
+      min-width: 0
+      padding: 20px 12px
+      gap: 16px
+    @include mobile
+      padding: 12px 6px
+      gap: 10px
+  &__info-item
+    display: flex
+    align-items: center
+    gap: 16px
+    font-size: 16px
+    color: $primary-text
+    @include mobile
+      font-size: 15px
+      gap: 10px
+  &__icon
+    width: 32px
+    height: 32px
+    object-fit: contain
+    flex-shrink: 0
+    @include mobile
+      width: 26px
+      height: 26px
+
+.contacts__map-section
+  padding: 0 0 60px
+  .container
+    max-width: 1000px
+    margin: 0 auto
+    padding: 0 15px
+  .contacts__map
+    width: 100%
+    max-width: 100%
+    margin: 0 auto
+    border-radius: 18px
+    overflow: hidden
+    box-shadow: 0 6px 32px rgba(0,0,0,0.10)
+    margin-top: 32px
+    margin-bottom: 0
+    iframe
+      width: 100%
+      height: 350px
+      border: none
+      display: block
+  @include mobile
+    padding-bottom: 30px
+    .contacts__map
+      border-radius: 12px
+      box-shadow: 0 3px 16px rgba(0,0,0,0.10)
+      margin-top: 18px
+      iframe
+        height: 200px
